@@ -16,7 +16,7 @@ namespace Worker
         {
             try
             {
-                var pgsql = OpenDbConnection("Server=postgres;Username=postgres_user;Password=postgres_password;Database=postgres");
+                var pgsql = OpenDbConnection("Server=postgresql;Username=postgres_user;Password=postgres_password;Database=postgres");
                 var redisConn = OpenRedisConnection("redis");
                 var redis = redisConn.GetDatabase();
 
@@ -80,12 +80,12 @@ namespace Worker
                 }
                 catch (SocketException)
                 {
-                    Console.Error.WriteLine("Waiting for db here!!!");
+                    Console.Error.WriteLine("Waiting for db here>>>");
                     Thread.Sleep(1000);
                 }
                 catch (DbException)
                 {
-                    Console.Error.WriteLine("Waiting for db here!!!");
+                    Console.Error.WriteLine("Waiting for db here<<<");
                     Thread.Sleep(1000);
                 }
             }
